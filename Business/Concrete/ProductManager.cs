@@ -52,7 +52,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
         {
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max),Messages.GetData);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.UnitPrice  >= min && p.UnitPrice <= max),Messages.GetData);
         }
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
