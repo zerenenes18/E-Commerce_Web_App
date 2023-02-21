@@ -8,15 +8,43 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            // Data Transformation Objects 
+            //ProductTest();
+            // IoC container 
 
-            ProductManager productManager = new ProductManager(new EfProductDal());
+            ProductTest();
+            //CategoryTest();
 
-            foreach (var p in productManager.GetByUnitPrice(10,20))
+        }
+
+        private static void CategoryTest()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            foreach (var c in categoryManager.GetAll())
             {
-                Console.WriteLine("Product Name :" + p.ProductName 
-                                + " ---CategoryID:" + p.CategoryId 
-                                + " ---Price:" + p.UnitPrice );
-            } 
+                Console.WriteLine(c.CategoryName);
+            }
+        }
+
+        private static void ProductTest()
+        {
+            ProductManager productManager = new ProductManager(new EfProductDal());
+            var result = productManager.GetProductDetails();
+            
+            if (result.Success == true)
+            {
+                foreach (var p in result.Data)
+                {
+
+                    Console.WriteLine("Product Name :" + p.ProductName
+                                    + " ---CategoryName:" + p.CategoryName
+                                    + " ---UnitsInStock:" + p.UnitsInStock);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
     }
 }
