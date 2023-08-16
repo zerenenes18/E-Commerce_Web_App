@@ -38,11 +38,3 @@
     <li>Adding new products</li>
     <li>Authorization: Assigning roles like admin, manager to users</li>
 </ul>
-
-<h2>Security</h2>
-
-<p>The project employs JWT token-based authentication for secure user login.</p>
-
-<h2>License</h2>
-
-<p>This project does not have a specified license. However, it is recommended to adhere to good faith practices and ensure your created code complies with licensing requirements.</p>
