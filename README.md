@@ -5,20 +5,50 @@
 <h2>Technologies and Libraries Used</h2>
 
 <ul>
-    <li>C# and .NET Core</li>
+    <li>C#.NET Core</li>
+    <li>.NET Core</li>
     <li>FluentValidation, Autofac, Autofac.Extras.DynamicProxy</li>
-    <li>Entity Framework Core and Microsoft SQL Server</li>
-    <li>JWT Authentication (Microsoft.IdentityModel.Tokens)</li>
-    <li>Logging (log4net, Microsoft.Extensions.Logging.Debug)</li>
-    <li>MicroKnights.Log4NetAdoNetAppender</li>
-    <li>Microsoft.AspNetCore.Authentication.JwtBearer</li>
+    <li>Autofac</li>
+    <li>Entity Framework Core</li>
+    <li>Microsoft SQL Server</li>
+    <li>JWT Authentication </li>
+    <li>log4net</li>
 </ul>
 
-<h2>Running the Project</h2>
+<h2>API Controllers</h2>
 
-<p>You can interact with the project's API endpoints by making requests. The project is not actively hosted yet, but it will be made available soon.</p>
+<h3>ProductsController</h3>
+<p>This controller handles operations related to products.</p>
 
-<h2>Project Structure</h2>
+<h4>Endpoints:</h4>
+<ul>
+    <li><code>GET api/products/getall</code>: Retrieves a list of all products.</li>
+    <li><code>GET api/products/getlistbycategory?categoryId={categoryId}</code>: Retrieves a list of products filtered by category.</li>
+    <li><code>GET api/products/getbyid?productId={productId}</code>: Retrieves product details by product ID.</li>
+    <li><code>POST api/products/add</code>: Adds a new product.</li>
+    <li><code>POST api/products/update</code>: Updates an existing product.</li>
+    <li><code>POST api/products/delete</code>: Deletes a product.</li>
+    <li><code>POST api/products/transaction</code>: Performs a transactional operation on a product.</li>
+</ul>
+
+<h2>AuthController</h2>
+<p>This controller manages user authentication and registration.</p>
+
+<h3>Endpoints:</h3>
+<ul>
+    <li><code>POST api/auth/login</code>: Allows users to log in with their credentials.</li>
+    <li><code>POST api/auth/register</code>: Registers new users.</li>
+</ul>
+<h2>How to Use</h2>
+<ol>
+    <li>Clone the repository to your local machine.</li>
+    <li>Open the solution in Visual Studio or your preferred code editor.</li>
+    <li>Make sure you have the necessary dependencies installed.</li>
+    <li>Run the project.</li>
+    <li>Use the provided endpoints to interact with the API.</li>
+</ol>
+
+<h3>Project Structure</h3>
 
 <p>The project follows the principles of the Onion Architecture. The core layers are as follows:</p>
 
