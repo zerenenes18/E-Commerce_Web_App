@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>E-Commerce .NET Core Project</title>
-</head>
-<body>
-
 <h1>E-Commerce .NET Core Project</h1>
 
 <p>This project contains the backend part of a personal development-oriented e-commerce web application built using .NET Core. The main goal of this project is to provide basic e-commerce functionality and enhance familiarity with .NET Core technologies.</p>
@@ -53,6 +46,3 @@
 <h2>License</h2>
 
 <p>This project does not have a specified license. However, it is recommended to adhere to good faith practices and ensure your created code complies with licensing requirements.</p>
-
-</body>
-</html>
