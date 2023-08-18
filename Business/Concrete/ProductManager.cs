@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -22,6 +23,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [SecuredOperation("admin,manager")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -43,12 +45,18 @@ namespace Business.Concrete
             return new Result(true,Messages.ProductAdded);
         }
 
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            return new Result(true, "product deleted");
+        }
+
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 3)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 3)
+            //{
+            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            //}
 
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductsListed);
         }
@@ -68,12 +76,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.UnitPrice  >= min && p.UnitPrice <= max),Messages.GetData);
         }
 
+        public IDataResult<List<ProductDetailDto>> GetPrnoductDetails()
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
-            if (DateTime.Now.Hour == 2)
-            {
-                return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 2)
+            //{
+            //    return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
+            //}
 
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails(),Messages.GetData);
         }

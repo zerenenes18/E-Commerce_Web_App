@@ -16,9 +16,11 @@ namespace Core.EntityFramework
 
         public void Add(TEntity entity)
         {
+            var entity_ = entity;
             // IDisposable pattern implement of c#
             using (TContext context = new TContext())
             {
+                var _entity = entity;
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
@@ -39,7 +41,7 @@ namespace Core.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().SingleOrDefault(filter);
+                return context.Set<TEntity>().SingleOrDefault(filter);  
 
             }
         }

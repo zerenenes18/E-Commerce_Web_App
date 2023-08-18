@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebApplication1.Controllers
@@ -27,7 +28,7 @@ namespace WebApplication1.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-
+            //Thread.Sleep(5000);
             //Dependency chain 
             //IProductService productService = new ProductManager(new EfProductDal());
             //var result = productService.GetAll();
@@ -53,7 +54,20 @@ namespace WebApplication1.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbycategory")]
+        public IActionResult GetByCategory(int categoryId)
+        {
+            var result = _productService.GetAllByCategoryId(categoryId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("add")]
+
 
         public IActionResult Add(Product product)
         {
@@ -66,6 +80,19 @@ namespace WebApplication1.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpPost("delete")]
+            
+        public IActionResult Delete(Product product)
+        {
+            var result = _productService.Delete(product); 
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
 
     }
 }

@@ -21,8 +21,8 @@ namespace WebApplication1
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseServiceProviderFactory(new AutofacServiceProviderFactory())         // bizim .net harici bir aoc kullanacaðýmýzý bildir
-                .ConfigureContainer<ContainerBuilder>(builder =>                        // bizim kullandýðýmýz autofac in yerini bildir
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureContainer<ContainerBuilder>(builder =>
                 {
                     builder.RegisterModule(new AutofacBusinessModule());
                 })

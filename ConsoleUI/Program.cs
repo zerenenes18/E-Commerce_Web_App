@@ -17,14 +17,6 @@ namespace ConsoleUI
 
         }
 
-        private static void CategoryTest()
-        {
-            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach (var c in categoryManager.GetAll())
-            {
-                Console.WriteLine(c.CategoryName);
-            }
-        }
 
         private static void ProductTest()
         {

@@ -21,7 +21,7 @@ namespace Business.ValidationRules.FluentValidation
 
         private bool StartWithA(string arg)
         {
-            if (arg.StartsWith("A") && arg.StartsWith("a"))
+            if (arg.StartsWith("A") || arg.StartsWith("a"))
             {
                 return true;
 
