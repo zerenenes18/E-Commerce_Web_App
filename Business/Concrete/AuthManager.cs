@@ -79,6 +79,8 @@ namespace Business.Concrete
                var userToUpdate =  _userService.GetByMail(userEmail);
                userToUpdate.EmailControl = true;
                 _userService.Update(userToUpdate);
+                var deleteToCode = _validationcodeDal.Get(c => c.Code == code);
+                _validationcodeDal.Delete(deleteToCode);
                 return new SuccessResult();
             }
 
